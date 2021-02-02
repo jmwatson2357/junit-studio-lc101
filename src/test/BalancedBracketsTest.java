@@ -2,6 +2,7 @@ package test;
 
 import org.junit.Test;
 
+import static main.BalancedBrackets.hasBalancedBrackets;
 import static org.junit.Assert.*;
 
 public class BalancedBracketsTest {
@@ -12,21 +13,186 @@ public class BalancedBracketsTest {
         assertEquals(true, true);
     }
 
-    //    @Test
-//    public void onlyBracketsReturnsTrue() {
-//        assertTrue(BalancedBrackets.hasBalancedBrackets("[]"));
-//    }
 
-//  create an @Before to extract "[" and "]" into an array
+//      1 - [LaunchCode]
+    @Test
+    public void hasBalancedBrackets_ProperString1_ShouldReturnTrue() {
+        // Assert
+        var string = "[LaunchCode]";
 
-//      2. verify that "[" is always an even index
-//      3. verify that "]" is always an odd index;
-//      4. return fail statement if method returns a negative number
-//      5. return fail statement if method returns a positive number
-//    6. verify string has at least one "[" bracket
-//    7. verify string has at least one "]" bracket
-//    8. return fail statement if method does not have any "[" brackets
-//    9. return fail statement if method does not have any "]" brackets
-//    10. return success statement if method returns "0"
+        // Act
+        var expected = hasBalancedBrackets(string);
+
+        // Assert
+        assertTrue(expected);
+    }
+
+//    2 - Launch[Code]
+    @Test
+    public void hasBalancedBrackets_ProperString2_ShouldReturnTrue() {
+        // Assert
+        var string = "Launch[Code]";
+
+        // Act
+        var expected = hasBalancedBrackets(string);
+
+        // Assert
+        assertTrue(expected);
+    }
+//    3 - []LaunchCode
+        @Test
+        public void hasBalancedBrackets_ProperString3_ShouldReturnTrue() {
+            // Assert
+            var string = "[]LaunchCode";
+
+            // Act
+            var expected = hasBalancedBrackets(string);
+
+            // Assert
+            assertTrue(expected);
+    }
+//    4 -
+    @Test
+    public void hasBalancedBrackets_emptyString_ShouldReturnTrue() {
+        // Assert
+        var string = "";
+
+        // Act
+        var expected = hasBalancedBrackets(string);
+
+        // Assert
+        assertTrue(expected);
+    }
+//    5 - []
+    @Test
+    public void hasBalancedBrackets_openCloseBracket_ShouldReturnTrue() {
+        // Assert
+        var string = "[]";
+
+        // Act
+        var expected = hasBalancedBrackets(string);
+
+        // Assert
+        assertTrue(expected);
+    }
+//    6 - [[
+    @Test
+    public void hasBalancedBrackets_doubleOpenBrackets_ShouldReturnFalse() {
+        // Assert
+        var string = "[[";
+
+        // Act
+        var expected = hasBalancedBrackets(string);
+
+        // Assert
+        assertFalse(expected);
+    }
+//    7 - ]]
+    @Test
+    public void hasBalancedBrackets_doubleClosingBracket_ShouldReturnFalse() {
+        // Assert
+        var string = "]]";
+
+        // Act
+        var expected = hasBalancedBrackets(string);
+
+        // Assert
+        assertFalse(expected);
+    }
+//    8 - [[]]
+    @Test
+    public void hasBalancedBrackets_nestedBrackets_ShouldReturnTrue() {
+        // Assert
+        var string = "[[]]";
+
+        // Act
+        var expected = hasBalancedBrackets(string);
+
+        // Assert
+        assertTrue(expected);
+    }
+//    9  - [][]
+    @Test
+    public void hasBalancedBrackets_sequentialBrackets_ShouldReturnTrue() {
+        // Assert
+        var string = "[][]";
+
+        // Act
+        var expected = hasBalancedBrackets(string);
+
+        // Assert
+        assertTrue(expected);
+    }
+//    10 - ][
+    @Test
+    public void hasBalancedBrackets_closeOpenBracket_ShouldReturnFalse() {
+        // Assert
+        var string = "][";
+
+        // Act
+        var expected = hasBalancedBrackets(string);
+
+        // Assert
+        assertFalse(expected);
+    }
+//    11 - [LaunchCode
+    @Test
+    public void hasBalancedBrackets_missingCloseBracket_ShouldReturnFalse() {
+        // Assert
+        var string = "[LaunchCode";
+
+        // Act
+        var expected = hasBalancedBrackets(string);
+
+        // Assert
+        assertFalse(expected);
+    }
+//    12 - Launch]Code[
+    @Test
+    public void hasBalancedBrackets_closeOpenBracket2_ShouldReturnFalse() {
+        // Assert
+        var string = "Launch]Code[";
+
+        // Act
+        var expected = hasBalancedBrackets(string);
+
+        // Assert
+        assertFalse(expected);
+    }
+//    13 - [
+    @Test
+    public void hasBalancedBrackets_openingBracket_ShouldReturnFalse() {
+        // Assert
+        var string = "[";
+
+        // Act
+        var expected = hasBalancedBrackets(string);
+
+        // Assert
+        assertFalse(expected);
+    }
+//    14 - ]
+    @Test
+    public void hasBalancedBrackets_closingBracket_ShouldReturnFalse() {
+        // Assert
+        var string = "]";
+
+        // Act
+        var expected = hasBalancedBrackets(string);
+
+        // Assert
+        assertFalse(expected);
+    }
+//    15 - pass in null
+    @Test(expected = NullPointerException.class)
+    public void hasBalancedBrackets_returnNull_ShouldReturnFalse() {
+        // Assert
+
+        // Act
+        var expected = hasBalancedBrackets(null);
+
+        // Assert
+        assertFalse(expected);
+    }
 
 }
